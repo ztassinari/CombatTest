@@ -217,6 +217,9 @@ GameObject:
   - component: {fileID: 275766626}
   - component: {fileID: 275766625}
   - component: {fileID: 275766630}
+  - component: {fileID: 275766633}
+  - component: {fileID: 275766632}
+  - component: {fileID: 275766631}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -233,17 +236,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 275766624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 747ce286a789fe741b1defc52ef675d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dac315e5d521a14082499703e1d24c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkingSpeed: 10
-  RunningSpeed: 20
+  _Movement:
+    _WalkingSpeed: 3
+    _RunningSpeed: 6
+    _SneakWalkingSpeed: 1.5
+    _SneakRunningSpeed: 4.5
+    MovementImplementation:
+      ObjectField: {fileID: 275766632}
+      ResultType: 
   Head: {fileID: 232135336}
   Feet: {fileID: 1180970947}
   MinPitch: -80
   MaxPitch: 80
   MaxGroundedDistance: 0.1
-  JumpSpeed: 5
 --- !u!65 &275766626
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -334,6 +342,59 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &275766631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275766624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9440a8dcc99811468b87011f7b99119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Walking:
+    MovingForce: 0
+    StoppingForce: 0
+  Running:
+    MovingForce: 0
+    StoppingForce: 0
+  SneakWalking:
+    MovingForce: 0
+    StoppingForce: 0
+  SneakRunning:
+    MovingForce: 0
+    StoppingForce: 0
+  JumpImpulseForce: 5
+--- !u!114 &275766632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275766624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e7ac49fa3de4e4db614f710857631e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Acceleration: 10
+  Deceleration: 20
+  JumpImpulseForce: 5
+--- !u!114 &275766633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275766624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a84cdcb644875e941901441f9d59bf32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpSpeed: 5
 --- !u!1 &1180970946
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +511,7 @@ Transform:
   m_GameObject: {fileID: 1314200502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -1.4, z: 0}
-  m_LocalScale: {x: 10, y: 0.1, z: 10}
+  m_LocalScale: {x: 1000, y: 0.1, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
